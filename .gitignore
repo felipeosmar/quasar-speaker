@@ -1,0 +1,21 @@
+# ESPHome
+firmware/.esphome/
+firmware/secrets.yaml
+*.pyc
+__pycache__/
+
+# Wake word training data (large files)
+wake-word/positive/*.wav
+wake-word/negative/*.wav
+wake-word/test/*.wav
+
+# Models (large)
+wake-word/models/*.tflite
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
