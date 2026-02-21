@@ -4,19 +4,23 @@
 
 **Duração estimada:** 1-2 dias (após receber componentes)
 
-## Lista de Compras (1 protótipo)
+## Lista de Compras (1 protótipo — opção mais barata)
 
-| Item | Qtd | Preço Est. |
-|------|-----|------------|
-| ESP32-S3-DevKitC-1 N16R8 | 1 | R$45 |
-| INMP441 breakout | 1 | R$15 |
-| MAX98357A breakout | 1 | R$18 |
-| Speaker 3W 4Ω 40mm | 1 | R$10 |
-| WS2812B ring 8 LEDs | 1 | R$5 |
-| Protoboard 830 pontos | 1 | R$8 |
-| Kit jumpers M-M, M-F | 1 | R$8 |
-| Cabo USB-C | 1 | R$10 |
-| **Total** | | **~R$119** |
+| Item | Qtd | Preço Est. | Onde |
+|------|-----|------------|------|
+| ESP32-S3-DevKitC-1 N16R8 | 1 | R$35-45 | AliExpress |
+| INMP441 breakout | 1 | R$12-18 | AliExpress |
+| MAX98357A breakout | 1 | R$15-20 | AliExpress |
+| Speaker 3W 4Ω 40mm | 1 | R$8-12 | AliExpress |
+| WS2812B ring 8 LEDs | 1 | R$5 | AliExpress |
+| Protoboard 830 pontos | 1 | R$8 | Local |
+| Kit jumpers M-M, M-F | 1 | R$8 | Local |
+| Cabo USB-C | 1 | R$10 | Local |
+| **Total estimado** | | **~R$100-120** | |
+
+**Dica de economia:** Comprar todos os módulos no AliExpress numa tacada (frete combinado). Tempo de entrega: 15-30 dias. Se tiver pressa, Mercado Livre tem tudo mas ~30-50% mais caro.
+
+> **Nota sobre ESP32-S3-BOX-3:** A Espressif vende o BOX-3 (~R$180-250) que já vem com mic, speaker, tela e case. É prático pra testar o pipeline de voz rapidamente, mas **não é recomendado pra este projeto** porque: (1) mais caro pra escalar pra 5 unidades, (2) não permite customização de hardware, (3) queremos aprender o processo completo. Se quiser um pra brincar/testar o pipeline enquanto espera os componentes, é uma opção válida como ferramenta de dev — mas não será o QuasarBox final.
 
 ## Montagem Passo a Passo
 

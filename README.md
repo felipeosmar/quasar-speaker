@@ -17,11 +17,11 @@ O QuasarBox é um speaker compacto com microfone always-listening que detecta um
     ┌─────────────────────────────────────────────────────┐
     │             DeskFelipeDell (Servidor)                │
     │                                                     │
-    │  Home Assistant ──► Voice Pipeline                  │
-    │    ├── STT: Whisper (local)                         │
+    │  Home Assistant (Docker) ──► Voice Pipeline          │
+    │    ├── STT: Whisper (Docker)                        │
     │    ├── Conversation Agent: OpenClaw (Quasar/Claude) │
-    │    ├── TTS: Piper (local)                           │
-    │    └── Wake Word: openWakeWord (backup)             │
+    │    ├── TTS: Piper (Docker)                          │
+    │    └── Wake Word: openWakeWord (Docker, backup)     │
     │                                                     │
     │  OpenClaw ──► Interpreta comando ──► Executa ação   │
     │    ├── Home Assistant API (luzes, sensores, etc.)    │
@@ -39,43 +39,61 @@ O QuasarBox é um speaker compacto com microfone always-listening que detecta um
 - [Sprint 1 — Protótipo Hardware](docs/05-sprint-1-hardware.md)
 - [Sprint 2 — Firmware ESPHome](docs/06-sprint-2-firmware.md)
 - [Sprint 3 — Conversation Agent (OpenClaw)](docs/07-sprint-3-conversation-agent.md)
-- [Sprint 4 — Wake Word Custom ("Ei Quasar")](docs/08-sprint-4-wake-word.md)
+- [Sprint 4 — Wake Word](docs/08-sprint-4-wake-word.md)
 - [Sprint 5 — Case e Acabamento](docs/09-sprint-5-case.md)
 - [Sprint 6 — Multi-Room](docs/10-sprint-6-multi-room.md)
+- [Sprint 7 — Integração HA ↔ Dispositivos](docs/11-sprint-7-integracao-ha.md)
+- [Sprint 8 — PCB Custom](docs/12-sprint-8-pcb-custom.md)
+- [Hardware Design (Referência)](docs/hardware-design.md)
 - [Referências](docs/referencias.md)
 
 ## 🏗️ Status
 
 | Sprint | Descrição | Status |
 |--------|-----------|--------|
-| 0 | Setup servidor (HA Voice Pipeline) | 🔲 Não iniciado |
-| 1 | Protótipo hardware (1 unidade) | 🔲 Não iniciado |
+| 0 | Setup servidor (HA Voice Pipeline via Docker) | 🔲 Não iniciado |
+| 1 | Protótipo hardware (1 unidade, protoboard) | 🔲 Não iniciado |
 | 2 | Firmware ESPHome | 🔲 Não iniciado |
 | 3 | Conversation Agent (OpenClaw) | 🔲 Não iniciado |
-| 4 | Wake Word custom | 🔲 Não iniciado |
+| 4 | Wake Word (provisória + custom) | 🔲 Não iniciado |
 | 5 | Case 3D e acabamento | 🔲 Não iniciado |
 | 6 | Multi-room (5 cômodos) | 🔲 Não iniciado |
+| 7 | Integração HA ↔ dispositivos smart | 🔲 Não iniciado |
+| 8 | PCB custom (design + fabricação) | 🔲 Não iniciado |
 
 ## 💰 Custo Estimado
 
-| Item | Qtd | Unitário | Total |
-|------|-----|----------|-------|
-| ESP32-S3 (N16R8 ou DevKit) | 5 | ~R$45 | ~R$225 |
-| INMP441 (microfone I2S) | 5 | ~R$15 | ~R$75 |
-| MAX98357A (amplificador I2S) | 5 | ~R$18 | ~R$90 |
-| Speaker 3W 4Ω 40mm | 5 | ~R$10 | ~R$50 |
-| LED RGB WS2812B (feedback visual) | 5 | ~R$5 | ~R$25 |
-| Cabos, conectores, protoboard | 5 | ~R$15 | ~R$75 |
-| Fonte USB-C 5V 2A | 5 | ~R$20 | ~R$100 |
-| Filamento PLA (case 3D) | 1 | ~R$60 | ~R$60 |
-| **Total (5 unidades)** | | | **~R$700** |
+### Protótipo (1 unidade, protoboard)
+
+| Item | Preço Est. |
+|------|------------|
+| ESP32-S3-DevKitC-1 N16R8 | ~R$40 |
+| INMP441 breakout | ~R$15 |
+| MAX98357A breakout | ~R$18 |
+| Speaker 3W 4Ω 40mm | ~R$10 |
+| WS2812B ring 8 LEDs | ~R$5 |
+| Protoboard + jumpers | ~R$16 |
+| Cabo USB-C | ~R$10 |
+| **Total protótipo** | **~R$115** |
+
+### Produção (5 unidades com PCB)
+
+| Item | Qtd | Total |
+|------|-----|-------|
+| Componentes eletrônicos (5x) | 5 | ~R$440 |
+| PCB custom (JLCPCB, 5 un.) | 5 | ~R$50-120 |
+| Fontes USB-C 5V 2A | 5 | ~R$100 |
+| Filamento PLA (cases 3D) | 1 | ~R$60 |
+| Dispositivos smart (lâmpadas, plugs) | — | ~R$150-280 |
+| **Total estimado (5 unidades + devices)** | | **~R$800-1000** |
 
 ## 🛠️ Infraestrutura Existente
 
-- **Servidor:** DeskFelipeDell (Ubuntu, headless, CPU boa pra Whisper)
-- **Home Assistant:** Rodando em `localhost:8123`
+- **Servidor:** DeskFelipeDell (Ubuntu, headless, Docker)
+- **Home Assistant:** Rodando em Docker, `localhost:8123`
 - **OpenClaw (Quasar):** Instância ativa com acesso a HA API
 - **Whisper:** Já instalado (`whisper-transcribe`, modelo small, ~7s/3s áudio)
+- **LG TV Controller:** API local em `:8888`
 - **Rede:** Wi-Fi 2.4GHz em toda a casa
 
 ## 📄 Licença

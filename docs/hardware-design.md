@@ -365,7 +365,7 @@ Fonte de 5V/2A tem margem suficiente.
 
 ### Dimensões
 
-- **Forma:** Circular, Ø85mm (cabe no case cilíndrico)
+- **Forma:** Retangular (ou outra forma a definir com base no case — ver Sprint 8)
 - **Layers:** 2 (Top + Bottom) — suficiente pra essa complexidade
 - **Espessura:** 1.6mm (padrão)
 
@@ -460,7 +460,7 @@ Buscar no EasyEDA Library (LCSC integrado):
 | Track width mínimo | 0.2mm (sinal), 0.5mm (power) |
 | Clearance mínimo | 0.2mm |
 | Via diameter | 0.6mm (hole 0.3mm) |
-| Board outline | Ø85mm circular |
+| Board outline | Retangular (dimensões a definir) |
 | Copper layers | 2 |
 | Board thickness | 1.6mm |
 | Surface finish | HASL (mais barato) ou ENIG |
@@ -510,7 +510,7 @@ Buscar no EasyEDA Library (LCSC integrado):
 - [ ] Esquemático: botões (reset, boot, mute)
 - [ ] DRC esquemático: 0 erros
 - [ ] PCB: footprints atribuídos
-- [ ] PCB: board outline Ø85mm
+- [ ] PCB: board outline definido (retangular ou conforme case)
 - [ ] PCB: componentes posicionados
 - [ ] PCB: zona de exclusão na antena
 - [ ] PCB: trilhas roteadas

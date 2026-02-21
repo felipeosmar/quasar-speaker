@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  # ─── ESPHome ─────────────────────────────────────────────
+  esphome:
+    container_name: esphome
+    image: ghcr.io/esphome/esphome:latest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./firmware:/config
+      - /etc/localtime:/etc/localtime:ro
+
+  # ─── Wyoming Faster-Whisper (STT) ───────────────────────
+  wyoming-whisper:
+    container_name: wyoming-whisper
+    image: rhasspy/wyoming-whisper:latest
+    restart: unless-stopped
+    ports:
+      - "10300:10300"
+    volumes:
+      - whisper-data:/data
+    command: >
+      --model small
+      --language pt
+      --uri tcp://0.0.0.0:10300
+      --data-dir /data
+      --device cpu
+
+  # ─── Wyoming Piper (TTS) ────────────────────────────────
+  wyoming-piper:
+    container_name: wyoming-piper
+    image: rhasspy/wyoming-piper:latest
+    restart: unless-stopped
+    ports:
+      - "10200:10200"
+    volumes:
+      - piper-data:/data
+    command: >
+      --voice pt_BR-faber-medium
+      --uri tcp://0.0.0.0:10200
+      --data-dir /data
+      --download-dir /data
+
+  # ─── Wyoming openWakeWord ────────────────────────────────
+  wyoming-openwakeword:
+    container_name: wyoming-openwakeword
+    image: rhasspy/wyoming-openwakeword:latest
+    restart: unless-stopped
+    ports:
+      - "10400:10400"
+    command: >
+      --uri tcp://0.0.0.0:10400
+      --preload-model hey_jarvis
+
+volumes:
+  whisper-data:
+  piper-data:
